@@ -3,31 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruitment Request Form</title>
+    <title>Job Request Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #4b79a1, #283e51);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .icon {
+            position: absolute;
+            left: -45px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1612f8;
+            width: 44px;
+        }
+
+        .input-wrapper input,
+        .input-wrapper textarea,
+        .input-wrapper select {
+            width: calc(100% - 44px); /* Adjusted width for the icon */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-wrapper textarea {
+            resize: vertical;
+            height: 120px; /* Adjusted height for textarea */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .links {
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Recruitment Request Form</h1>
-    <form id="requestForm" enctype="multipart/form-data">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="designation">Designation:</label><br>
-        <input type="text" id="designation" name="designation" required><br><br>
-        
-        <label for="skills">Skills:</label><br>
-        <input type="text" id="skills" name="skills" required><br><br>
-        
-        <label for="experience">Experience:</label><br>
-        <input type="number" id="experience" name="experience" required><br><br>
-        
-        <label for="jobDescription">Job Description (PDF only):</label><br>
-        <input type="file" id="jobDescription" name="job_description" accept="application/pdf" required><br><br>
-        
-        <button type="submit">Submit Request</button>
-    </form>
+    <div class="container">
+        <h1>Welcome to Job Request Portal</h1>
+        <form id="requestForm">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <span class="icon">📝</span>
+                    <textarea id="jobDescription" name="job_description" placeholder="Enter your job description"></textarea>
+                </div>
+            </div>
 
-    <div id="message"></div>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label>Upload Job Description PDF (Optional)</label>
+                    <input type="file" id="jobDescriptionFile" name="job_description_file">
+                </div>
+            </div>
 
-    <script src="script.js"></script> <!-- Link to your external JavaScript file -->
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <span class="icon">🧠</span>
+                    <label>Skills</label>
+                    <select id="skills" name="skills">
+                        <option value="java">Java</option>
+                        <option value="python">Python</option>
+                        <option value="js">JavaScript</option>
+                        <option value="mysql">MySQL</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <span class="icon">⏳</span>
+                    <label>Years of Experience</label>
+                    <select id="experience" name="experience">
+                        <option value="">Select years of experience</option>
+                        <option value="0.5">0-6 months</option>
+                        <option value="1">1 year</option>
+                        <option value="2">2 years</option>
+                        <option value="3">3 years</option>
+                        <option value="4">4 years</option>
+                        <option value="5">5 years</option>
+                        <option value="6">6 years</option>
+                        <option value="7">7 years</option>
+                        <option value="8">8 years</option>
+                        <option value="9">9 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <span class="icon">💼</span>
+                    <input type="text" id="designation" name="designation" placeholder="Enter designation">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <span class="icon">📧</span>
+                    <input type="email" id="email" name="email_id" placeholder="Enter your email address">
+                </div>
+            </div>
+
+            <button type="submit">Submit Request</button>
+            <div class="message" id="message"></div>
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
